@@ -11,7 +11,6 @@ white=`tput setaf 7`
 reset=`tput sgr0`
 
 echo "${red}Prepared ${white}by ${yellow}hary[at]sgo[dot]co[dot]id${reset}"
-echo 
 
 ANS(){
 	ACT=$1
@@ -67,20 +66,41 @@ ACT-PKGS-7384 () {
 	yum install yum-utils
 }
 
+QST-PHP-2372 () {
+	echo Turn off PHP information exposure [PHP-2372] 
+    echo Details  : expose_php = Off
+    echo https://cisofy.com/lynis/controls/PHP-2372/
+}
+ACT-PHP-2372 () {
+	while IFS= read -r line; do
+		echo set expose_php = Off on $line
+    	sed -i -e 's/expose_php = On/expose_php = Off/' $line
+	done < php_ini.txt
+}
+
+echo
 QST-HRDN-7230
 ANS ACT-HRDN-7230
 
+echo
 QST-FINT-4350
 ANS ACT-FINT-4350
 
+echo
 QST-BANN-7126
 ANS ACT-BANN-7126
 
+echo
 QST-BANN-7130
 ANS ACT-BANN-7130
 
+echo
 QST-PKGS-7384
 ANS ACT-PKGS-7384
+
+echo
+QST-PHP-2372
+ANS ACT-PHP-2372
 
 echo 
 echo "Task Complete!"
