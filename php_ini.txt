@@ -1,0 +1,5 @@
+/etc/php.ini
+/usr/local/zend/etc/php.ini
+/usr/local/zend/php/7.1/etc/php.ini
+/usr/local/zend/php/7.2/etc/php.ini
+/usr/local/zend/php/7.3/etc/php.ini
