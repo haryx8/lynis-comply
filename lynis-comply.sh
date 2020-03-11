@@ -11,6 +11,7 @@ white=`tput setaf 7`
 reset=`tput sgr0`
 
 echo "${red}Prepared ${white}by ${yellow}hary[at]sgo[dot]co[dot]id${reset}"
+echo 
 
 ANS(){
 	ACT=$1
@@ -58,6 +59,13 @@ ACT-BANN-7130 () {
 	cat banner.txt > /etc/issue.net
 }
 
+QST-PKGS-7384 () {
+	echo package 'yum-utils' for better consistency checking of the package database [PKGS-7384] 
+    echo https://cisofy.com/lynis/controls/PKGS-7384/
+}
+ACT-PKGS-7384 () {
+	yum install yum-utils
+}
 
 QST-HRDN-7230
 ANS ACT-HRDN-7230
@@ -71,4 +79,8 @@ ANS ACT-BANN-7126
 QST-BANN-7130
 ANS ACT-BANN-7130
 
+QST-PKGS-7384
+ANS ACT-PKGS-7384
+
+echo 
 echo "Task Complete!"
