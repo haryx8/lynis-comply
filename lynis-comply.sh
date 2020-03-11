@@ -4,10 +4,13 @@ clear
 red=`tput setaf 1`
 green=`tput setaf 2`
 yellow=`tput setaf 3`
+c4=`tput setaf 4`
+c5=`tput setaf 5`
+c6=`tput setaf 6`
 white=`tput setaf 7`
 reset=`tput sgr0`
 
-echo "Prepared by"
+echo "${red}Prepared ${white}by ${yellow}hary[at]sgo[dot]co[dot]id${reset}"
 
 ANS(){
 	ACT=$1
@@ -39,11 +42,33 @@ ACT-FINT-4350 () {
 	yum install aide
 }
 
+QST-BANN-7126 () {
+	echo Add a legal banner to /etc/issue, to warn unauthorized users [BANN-7126] 
+    echo https://cisofy.com/lynis/controls/BANN-7126/
+}
+ACT-BANN-7126 () {
+	cat banner.txt > /etc/issue
+}
+
+QST-BANN-7130 () {
+	echo Add legal banner to /etc/issue.net, to warn unauthorized users [BANN-7130] 
+    echo https://cisofy.com/lynis/controls/BANN-7130/
+}
+ACT-BANN-7130 () {
+	cat banner.txt > /etc/issue.net
+}
+
 
 QST-HRDN-7230
 ANS ACT-HRDN-7230
 
 QST-FINT-4350
 ANS ACT-FINT-4350
+
+QST-BANN-7126
+ANS ACT-BANN-7126
+
+QST-BANN-7130
+ANS ACT-BANN-7130
 
 echo "Task Complete!"
