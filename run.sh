@@ -126,6 +126,18 @@ ACT-MAIL-8818 () {
 	postconf | grep -i ^smtpd_banner
 }
 
+QST-KRNL-5820 () {
+	echo 
+	echo If not required, consider explicit disabling of core dump in /etc/security/limits.conf file [KRNL-5820]
+	echo https://cisofy.com/lynis/controls/KRNL-5820/
+}
+ACT-KRNL-5820 () {
+	echo 'fs.suid_dumpable = 0' >> /etc/sysctl.conf
+	sysctl -p
+	echo 'ulimit -S -c 0 > /dev/null 2>&1' >> /etc/profile
+	echo "* hard core 0" >> /etc/security/limits.conf
+}
+
 QST-HRDN-7230
 ANS ACT-HRDN-7230
 
@@ -152,6 +164,9 @@ ANS ACT-MAIL-8820
 
 QST-MAIL-8818
 ANS ACT-MAIL-8818
+
+QST-KRNL-5820
+ANS ACT-KRNL-5820
 
 echo 
 echo "Task Complete!"
