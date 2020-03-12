@@ -143,6 +143,15 @@ ACT-KRNL-5820 () {
 	echo "* hard core 0" >> /etc/security/limits.conf
 }
 
+QST-TOOL-5002 () {
+	echo 
+	echo Determine if automation tools are present for system management [TOOL-5002]
+	echo https://cisofy.com/lynis/controls/TOOL-5002/
+}
+ACT-TOOL-5002 () {
+	yum install yum-cron
+}
+
 QST-SSH-7408 () {
 	echo 
 	echo Consider hardening SSH configuration [SSH-7408]
@@ -200,6 +209,9 @@ ANS ACT-HRDN-7230
 
 QST-FINT-4350
 ANS ACT-FINT-4350
+
+QST-TOOL-5002
+ANS ACT-TOOL-5002
 
 QST-BANN-7126
 ANS ACT-BANN-7126
