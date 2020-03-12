@@ -115,6 +115,17 @@ ACT-MAIL-8820 () {
 	postconf | grep -i ^disable_vrfy_command
 }
 
+QST-MAIL-8818 () {
+	echo 
+	echo You are advised to hide the mail_name (option: smtpd_banner) from your postfix configuration. Use postconf -e or change your main.cf file (/etc/postfix/main.cf) [MAIL-8818]
+	echo https://cisofy.com/lynis/controls/MAIL-8818/
+}
+ACT-MAIL-8818 () {
+	postconf -e smtpd_banner = $myhostname ESMTP
+	postfix reload
+	postconf | grep -i ^smtpd_banner
+}
+
 QST-HRDN-7230
 ANS ACT-HRDN-7230
 
@@ -138,6 +149,9 @@ ANS ACT-PHP-2376
 
 QST-MAIL-8820
 ANS ACT-MAIL-8820
+
+QST-MAIL-8818
+ANS ACT-MAIL-8818
 
 echo 
 echo "Task Complete!"
