@@ -42,6 +42,11 @@ QST-FINT-4350 () {
 }
 ACT-FINT-4350 () {
 	yum install aide
+	aide --init
+	mv /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
+	ls -lt /var/lib/aide
+	aide --check
+	aide --update
 }
 
 QST-BANN-7126 () {
