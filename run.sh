@@ -143,6 +143,54 @@ ACT-KRNL-5820 () {
 	echo "* hard core 0" >> /etc/security/limits.conf
 }
 
+QST-SSH-7408 () {
+	echo 
+	echo Consider hardening SSH configuration [SSH-7408]
+	echo Details  : TCPKeepAlive (set YES to NO)
+	echo Details  : AllowAgentForwarding (set YES to NO)
+	echo Details  : MaxSessions (set 10 to 2)
+	echo Details  : MaxAuthTries (set 6 to 3)
+	echo Details  : LogLevel (set INFO to VERBOSE)
+	echo Details  : ClientAliveCountMax (set 3 to 2)
+	echo Details  : AllowTcpForwarding (set YES to NO)
+	#echo Details  : Compression (set YES to NO)
+	#echo Details  : X11Forwarding (set YES to NO)
+	echo https://cisofy.com/lynis/controls/SSH-7408/
+}
+ACT-SSH-7408 () {
+	cat /etc/ssh/sshd_config |grep TCPKeepAlive
+	sed -i -e 's/#TCPKeepAlive yes/TCPKeepAlive no/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep TCPKeepAlive
+
+	cat /etc/ssh/sshd_config |grep AllowAgentForwarding
+	sed -i -e 's/#AllowAgentForwarding yes/AllowAgentForwarding no/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep AllowAgentForwarding
+
+	cat /etc/ssh/sshd_config |grep MaxSessions
+	sed -i -e 's/#MaxSessions 10/MaxSessions 2/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep MaxSessions
+
+	cat /etc/ssh/sshd_config |grep MaxAuthTries
+	sed -i -e 's/#MaxAuthTries 6/MaxAuthTries 3/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep MaxAuthTries
+
+	cat /etc/ssh/sshd_config |grep LogLevel
+	sed -i -e 's/#LogLevel INFO/LogLevel VERBOSE/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep LogLevel
+
+	cat /etc/ssh/sshd_config |grep ClientAliveCountMax
+	sed -i -e 's/#ClientAliveCountMax 3/ClientAliveCountMax 2/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep ClientAliveCountMax
+
+	cat /etc/ssh/sshd_config |grep AllowTcpForwarding
+	sed -i -e 's/#AllowTcpForwarding yes/AllowTcpForwarding no/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep AllowTcpForwarding
+
+	cat /etc/ssh/sshd_config |grep X11Forwarding
+	sed -i -e 's/X11Forwarding yes/X11Forwarding no/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep X11Forwarding
+}
+
 QST-HRDN-7230
 ANS ACT-HRDN-7230
 
@@ -172,6 +220,9 @@ ANS ACT-MAIL-8818
 
 QST-KRNL-5820
 ANS ACT-KRNL-5820
+
+QST-SSH-7408
+ANS ACT-SSH-7408
 
 echo 
 echo "Task Complete!"
