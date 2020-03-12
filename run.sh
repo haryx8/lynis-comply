@@ -146,15 +146,15 @@ ACT-KRNL-5820 () {
 QST-SSH-7408 () {
 	echo 
 	echo Consider hardening SSH configuration [SSH-7408]
-	echo Details  : TCPKeepAlive (set YES to NO)
-	echo Details  : AllowAgentForwarding (set YES to NO)
-	echo Details  : MaxSessions (set 10 to 2)
-	echo Details  : MaxAuthTries (set 6 to 3)
-	echo Details  : LogLevel (set INFO to VERBOSE)
-	echo Details  : ClientAliveCountMax (set 3 to 2)
-	echo Details  : AllowTcpForwarding (set YES to NO)
-	#echo Details  : Compression (set YES to NO)
-	#echo Details  : X11Forwarding (set YES to NO)
+	echo "Details  : TCPKeepAlive (set YES to NO)"
+	echo "Details  : AllowAgentForwarding (set YES to NO)"
+	echo "Details  : MaxSessions (set 10 to 2)"
+	echo "Details  : MaxAuthTries (set 6 to 3)"
+	echo "Details  : LogLevel (set INFO to VERBOSE)"
+	echo "Details  : ClientAliveCountMax (set 3 to 2)"
+	echo "Details  : AllowTcpForwarding (set YES to NO)"
+	#echo "Details  : Compression (set YES to NO)"
+	#echo "Details  : X11Forwarding (set YES to NO)"
 	echo https://cisofy.com/lynis/controls/SSH-7408/
 }
 ACT-SSH-7408 () {
