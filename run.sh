@@ -153,8 +153,8 @@ QST-SSH-7408 () {
 	echo "Details  : LogLevel (set INFO to VERBOSE)"
 	echo "Details  : ClientAliveCountMax (set 3 to 2)"
 	echo "Details  : AllowTcpForwarding (set YES to NO)"
-	#echo "Details  : Compression (set YES to NO)"
-	#echo "Details  : X11Forwarding (set YES to NO)"
+	echo "Details  : Compression (set YES to NO)"
+	echo "Details  : X11Forwarding (set YES to NO)"
 	echo https://cisofy.com/lynis/controls/SSH-7408/
 }
 ACT-SSH-7408 () {
@@ -189,6 +189,10 @@ ACT-SSH-7408 () {
 	cat /etc/ssh/sshd_config |grep X11Forwarding
 	sed -i -e 's/X11Forwarding yes/X11Forwarding no/' /etc/ssh/sshd_config
 	cat /etc/ssh/sshd_config |grep X11Forwarding
+
+	cat /etc/ssh/sshd_config |grep Compression
+	sed -i -e 's/Compression delayed/Compression no/' /etc/ssh/sshd_config
+	cat /etc/ssh/sshd_config |grep Compression
 }
 
 QST-HRDN-7230
