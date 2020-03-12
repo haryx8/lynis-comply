@@ -121,7 +121,7 @@ QST-MAIL-8818 () {
 	echo https://cisofy.com/lynis/controls/MAIL-8818/
 }
 ACT-MAIL-8818 () {
-	postconf -e smtpd_banner=$myhostname ESMTP
+	postconf -e smtpd_banner=$myhostname-ESMTP
 	postfix reload
 	postconf | grep -i ^smtpd_banner
 }
